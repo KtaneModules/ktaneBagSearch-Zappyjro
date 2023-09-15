@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//Sorry about this horrible spaghetti mess XD
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Text.RegularExpressions;
@@ -19,6 +21,9 @@ public class bagSearch : MonoBehaviour {
 	public MeshRenderer[] suitcase;
 	public Material[] itemMaterials;
 	public Material[] suitcaseMaterials;
+	public KMColorblindMode ColourBlindMode;
+	public TextMesh colourText;
+	public GameObject colourObject;
 
 	private static int _moduleIdCounter = 1;
 	private int _moduleId = 0;
@@ -34,6 +39,7 @@ public class bagSearch : MonoBehaviour {
 	private int[] weights = new int[3];
 	private int[] flightLengths = new int[3];
 	private int[] colours = new int[3];
+	private bool colourBlindMode;
 
 	private string[] realAirlines = {
 		"SparkJet Airways",
@@ -86,11 +92,23 @@ public class bagSearch : MonoBehaviour {
 	void Start () {
 		_moduleId = _moduleIdCounter++;
 
+		if (ColourBlindMode.ColorblindModeActive) {
+			colourBlindMode = true;
+		}
+
+
 		//Random bag weights and colours
 		for (int i = 0; i < 3; i++) {
 			int j = i;
 			weights [j] = Random.Range (1, 40);
 			colours [j] = Random.Range (0, 6);
+		}
+
+		colourObject.gameObject.SetActive (false);
+		if (colourBlindMode) {
+			string[] coloursBlind = { "Red", "Blue", "Yellow", "Pink", "Green", "Orange", "Brown" };
+			colourObject.gameObject.SetActive (true);
+			colourText.text = coloursBlind [colours [0]];
 		}
 
 		//Choosing the airlines
@@ -514,6 +532,13 @@ public class bagSearch : MonoBehaviour {
 		currentBagArray = itemsBagTwo;
 		currentBag = 1;
 
+		colourObject.gameObject.SetActive (false);
+		if (colourBlindMode) {
+			string[] coloursBlind = { "Red", "Blue", "Yellow", "Pink", "Green", "Orange", "Brown" };
+			colourObject.gameObject.SetActive (true);
+			colourText.text = coloursBlind [colours [1]];
+		}
+
 		//START
 
 		bool starbadge = false;
@@ -733,6 +758,13 @@ public class bagSearch : MonoBehaviour {
 		numberScreen.text = "3";
 		currentBagArray = itemsBagThree;
 		currentBag = 2;
+
+		colourObject.gameObject.SetActive (false);
+		if (colourBlindMode) {
+			string[] coloursBlind = { "Red", "Blue", "Yellow", "Pink", "Green", "Orange", "Brown" };
+			colourObject.gameObject.SetActive (true);
+			colourText.text = coloursBlind [colours [2]];
+		}
 
 		//START
 
@@ -1251,6 +1283,58 @@ public class bagSearch : MonoBehaviour {
 			} else {
 				Module.HandleStrike ();
 				Debug.LogFormat("[Bag Search #{0}] Confiscated incorrect item in position {1}, strike issued.", _moduleId, (position + 1));
+			}
+		}
+	}
+	private readonly string TwitchHelpMessage = @"Toggle the X-ray machine with '!{0} xray', detain the passenger with '!{0} detain', allow the passenger to board with '!{0} board', confiscate an item in a specific position with '!{0} confiscate 1' with the number being the position in scanline order of the item or enable colourblind mode using '!{0} colourblind'";
+	private IEnumerator ProcessTwitchCommand(string command) {
+		command = command.ToLowerInvariant ();
+		if (command.Equals ("xray")) {
+			yield return null;
+			handleXray ();
+		} else if (command.Equals ("detain")) {
+			yield return null;
+			handleDetain ();
+		} else if (command.Equals ("board")) {
+			yield return null;
+			handleBoard ();
+		} else if (command.Equals ("confiscate 1")) {
+			yield return null;
+			if (itemButtons [0].isActiveAndEnabled) {
+				handleConfiscate (0);
+			}
+		} else if (command.Equals ("confiscate 2")) {
+			yield return null;
+			if (itemButtons [1].isActiveAndEnabled) {
+				handleConfiscate (1);
+			}
+		} else if (command.Equals ("confiscate 3")) {
+			yield return null;
+			if (itemButtons [2].isActiveAndEnabled) {
+				handleConfiscate (2);
+			}
+		} else if (command.Equals ("confiscate 4")) {
+			yield return null;
+			if (itemButtons [3].isActiveAndEnabled) {
+				handleConfiscate (3);
+			}
+		} else if (command.Equals ("confiscate 5")) {
+			yield return null;
+			if (itemButtons [4].isActiveAndEnabled) {
+				handleConfiscate (4);
+			}
+		} else if (command.Equals ("confiscate 6")) {
+			yield return null;
+			if (itemButtons [5].isActiveAndEnabled) {
+				handleConfiscate (5);
+			}
+		} else if (command.Equals ("colourblind") || command.Equals("colorblind")) {
+			yield return null;
+			if (!_isSolved) {
+				colourBlindMode = true;
+				string[] coloursBlind = { "Red", "Blue", "Yellow", "Pink", "Green", "Orange", "Brown" };
+				colourObject.gameObject.SetActive (true);
+				colourText.text = coloursBlind [colours [currentBag]];
 			}
 		}
 	}
