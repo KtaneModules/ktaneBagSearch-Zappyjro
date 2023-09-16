@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using UnityEngine;
 using KModkit;
 
 //Methods for working around bugs in the game
@@ -25,7 +26,7 @@ public static class GameFixes
         var call = false;
         return () =>
         {
-            call = !call;
+            call ^= true;
             if (call)
                 action();
         };
@@ -58,6 +59,8 @@ public static class GameFixes
     
     public static void UpdateChildrenProperly(this KMSelectable selectable, KMSelectable childToSelect = null)
     {
+        if(selectable == null)
+            return;
         foreach (var child in selectable.Children)
             child.UpdateSettings();
         selectable.UpdateSettings();
@@ -66,8 +69,10 @@ public static class GameFixes
 
     public static void UpdateSettings(this KMSelectable selectable)
     {
-        if (CopySettingsFromProxyMethod != null)
-            CopySettingsFromProxyMethod.Invoke(selectable.GetComponent(ModSelectableType), new object[0]);
+        if (selectable != null && CopySettingsFromProxyMethod != null)
+            CopySettingsFromProxyMethod.Invoke(
+                selectable.GetComponent(ModSelectableType) ?? selectable.gameObject.AddComponent(ModSelectableType),
+                new object[0]);
     }
     
 #endregion
@@ -77,8 +82,9 @@ public static class GameFixes
     static GameFixes()
     {
         ModSelectableType = ReflectionHelper.FindGameType("ModSelectable");
-        CopySettingsFromProxyMethod =
-            ModSelectableType.GetMethod("CopySettingsFromProxy", BindingFlags.Public | BindingFlags.Instance);
+        if (ModSelectableType != null)
+            CopySettingsFromProxyMethod =
+                ModSelectableType.GetMethod("CopySettingsFromProxy", BindingFlags.Public | BindingFlags.Instance);
     }
 #endif
 }
