@@ -847,9 +847,9 @@ Transform:
   - {fileID: 4665421324049090}
   - {fileID: 4342817191938786}
   - {fileID: 4236630837641818}
-  - {fileID: 4641855566961366}
-  - {fileID: 4961676683965976}
   - {fileID: 4807350371787230}
+  - {fileID: 4961676683965976}
+  - {fileID: 4641855566961366}
   m_Father: {fileID: 4668450410057750}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1065,7 +1065,7 @@ Transform:
   m_Children:
   - {fileID: 4856278920659932}
   m_Father: {fileID: 4192658563352042}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4646017483751018
 Transform:
@@ -1229,7 +1229,7 @@ Transform:
   m_Children:
   - {fileID: 4807206378858594}
   m_Father: {fileID: 4192658563352042}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4815574572954728
 Transform:
@@ -3533,8 +3533,8 @@ MonoBehaviour:
   Highlight: {fileID: 114953115888323504}
   SelectableColliders: []
   DefaultSelectableIndex: 3
-  AllowSelectionWrapX: 1
-  AllowSelectionWrapY: 1
+  AllowSelectionWrapX: 0
+  AllowSelectionWrapY: 0
   ForceSelectionHighlight: 0
   ForceInteractionHighlight: 0
 --- !u!114 &114810927416546562
