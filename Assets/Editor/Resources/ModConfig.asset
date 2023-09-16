@@ -14,7 +14,7 @@ MonoBehaviour:
   id: bagSearch
   title: Bag Search
   author: Zappyjro
-  description: "Search through 3 bags ensuring the follow a peculiar\r set of rules."
+  description: "Search through 3 bags ensuring they follow a peculiar\r set of rules."
   version: 1.0
   outputFolder: build
   previewImage: {fileID: 0}
