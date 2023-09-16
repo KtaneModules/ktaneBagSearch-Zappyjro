@@ -860,7 +860,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1645043138754924}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 1.152, y: 0.33, z: -0.6099999}
+  m_LocalPosition: {x: 1.152, y: 0.28, z: -0.6099999}
   m_LocalScale: {x: 1.1665, y: 0.55, z: 1.2499999}
   m_Children:
   - {fileID: 4429377261300390}
@@ -900,7 +900,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1801547792975194}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.001, y: 0.33, z: -0.6099999}
+  m_LocalPosition: {x: 0.001, y: 0.28, z: -0.6099999}
   m_LocalScale: {x: 1.1665, y: 0.55, z: 1.2499999}
   m_Children:
   - {fileID: 4161690066556644}
@@ -1060,7 +1060,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1744058374393490}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 1.152, y: 0.33, z: 0.619}
+  m_LocalPosition: {x: 1.152, y: 0.28, z: 0.619}
   m_LocalScale: {x: 1.1665, y: 0.55, z: 1.2499999}
   m_Children:
   - {fileID: 4856278920659932}
@@ -1100,7 +1100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1300087840645466}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -1.147, y: 0.33, z: -0.61}
+  m_LocalPosition: {x: -1.145, y: 0.28, z: -0.61}
   m_LocalScale: {x: 1.1666666, y: 0.55, z: 1.25}
   m_Children:
   - {fileID: 4020821262668508}
@@ -1224,7 +1224,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1503466315514266}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -1.147, y: 0.33, z: 0.619}
+  m_LocalPosition: {x: -1.145, y: 0.28, z: 0.619}
   m_LocalScale: {x: 1.1665, y: 0.55, z: 1.2499999}
   m_Children:
   - {fileID: 4807206378858594}
@@ -1331,7 +1331,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1916015353039298}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.015, y: 0.33, z: 0.619}
+  m_LocalPosition: {x: 0.015, y: 0.28, z: 0.619}
   m_LocalScale: {x: 1.1665, y: 0.55, z: 1.2499999}
   m_Children:
   - {fileID: 4694116244372642}
@@ -3154,6 +3154,7 @@ MonoBehaviour:
   Module: {fileID: 114865128630882374}
   Info: {fileID: 114390452745612050}
   modSettings: {fileID: 114755371981212154}
+  moduleSelectable: {fileID: 114806626865457500}
   itemButtons:
   - {fileID: 114980311757912776}
   - {fileID: 114451010226073048}
@@ -3519,21 +3520,21 @@ MonoBehaviour:
   - {fileID: 114451010226073048}
   - {fileID: 114848979657768236}
   - {fileID: 114468395257062008}
-  - {fileID: 114980311757912776}
-  - {fileID: 114451010226073048}
-  - {fileID: 114848979657768236}
-  - {fileID: 114496715988851092}
   - {fileID: 114193926921435492}
   - {fileID: 114283547036590654}
   - {fileID: 114523167156726778}
+  - {fileID: 114496715988851092}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 114970489287973578}
   IsPassThrough: 0
-  ChildRowLength: 0
+  ChildRowLength: 4
   Highlight: {fileID: 114953115888323504}
   SelectableColliders: []
-  DefaultSelectableIndex: 0
-  AllowSelectionWrapX: 0
-  AllowSelectionWrapY: 0
+  DefaultSelectableIndex: 3
+  AllowSelectionWrapX: 1
+  AllowSelectionWrapY: 1
   ForceSelectionHighlight: 0
   ForceInteractionHighlight: 0
 --- !u!114 &114810927416546562

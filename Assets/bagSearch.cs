@@ -13,6 +13,7 @@ public class bagSearch : MonoBehaviour {
 	public KMBombModule Module;
 	public KMBombInfo Info;
 	public KMModSettings modSettings;
+	public KMSelectable moduleSelectable;
 	public KMSelectable[] itemButtons;
 	public KMSelectable detainButton, boardButton, xrayButton;
 	public TextMesh airlineScreen, flightRouteScreen, weightScreen, numberScreen;
@@ -90,6 +91,7 @@ public class bagSearch : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 		_moduleId = _moduleIdCounter++;
 
 		if (ColourBlindMode.ColorblindModeActive) {
@@ -528,6 +530,7 @@ public class bagSearch : MonoBehaviour {
 			itemButtons [j].gameObject.SetActive (true);
 		}
 		xrayOn = false;
+		xrayRemoveChildren ();
 		numberScreen.text = "2";
 		currentBagArray = itemsBagTwo;
 		currentBag = 1;
@@ -755,6 +758,7 @@ public class bagSearch : MonoBehaviour {
 			itemButtons [j].gameObject.SetActive (true);
 		}
 		xrayOn = false;
+		xrayRemoveChildren ();
 		numberScreen.text = "3";
 		currentBagArray = itemsBagThree;
 		currentBag = 2;
@@ -1086,6 +1090,7 @@ public class bagSearch : MonoBehaviour {
 				Debug.LogFormat("[Bag Search #{0}] Xray machine should not have been turned on due to the FRQandU airline rule, strike issued.", _moduleId);
 			} else {
 				xrayOn = true;
+				xrayNewChildren ();
 				Audio.PlaySoundAtTransform ("xrayOn", Module.transform);
 				Debug.LogFormat("[Bag Search #{0}] Xray machine activated.", _moduleId);
 			}
@@ -1127,6 +1132,7 @@ public class bagSearch : MonoBehaviour {
 				}
 				if (!temp) {
 					xrayOn = false;
+					xrayRemoveChildren ();
 					Audio.PlaySoundAtTransform ("xrayOff", Module.transform);
 					Debug.LogFormat ("[Bag Search #{0}] Xray machine deactivated.", _moduleId);
 				} else {
@@ -1147,6 +1153,7 @@ public class bagSearch : MonoBehaviour {
 		suitcase [0].gameObject.SetActive (false);
 		suitcaseParts.gameObject.SetActive (false);
 		xrayOn = false;
+		xrayRemoveChildren ();
 		airlineScreen.text = "Enjoy your flight!";
 		flightRouteScreen.text = "Boarding...";
 		weightScreen.text = 0 + "kg";
@@ -1286,6 +1293,34 @@ public class bagSearch : MonoBehaviour {
 			}
 		}
 	}
+
+
+	void xrayNewChildren(){
+		return;
+		for (int i = 0; i < 6; i++) {
+			int j = i;
+			int q = i;
+			if (!(currentBagArray [j] == 0)) {
+				if (j >= 3) {
+					q++;
+				}
+				Debug.LogFormat("[Bag Search #{0}] ItemButtons{1} is now Child{2}.", _moduleId, j, q);
+				moduleSelectable.Children [q] = itemButtons [j];
+			}
+		}
+		moduleSelectable.UpdateChildren();
+	}
+	void xrayRemoveChildren(){
+		return;
+		moduleSelectable.Children [0] = null;
+		moduleSelectable.Children [1] = null;
+		moduleSelectable.Children [2] = null;
+		moduleSelectable.Children [4] = null;
+		moduleSelectable.Children [5] = null;
+		moduleSelectable.Children [6] = null;
+		moduleSelectable.UpdateChildren();
+	}
+
 	private readonly string TwitchHelpMessage = @"Toggle the X-ray machine with '!{0} xray', detain the passenger with '!{0} detain', allow the passenger to board with '!{0} board', confiscate an item in a specific position with '!{0} confiscate 1' with the number being the position in scanline order of the item or enable colourblind mode using '!{0} colourblind'";
 	private IEnumerator ProcessTwitchCommand(string command) {
 		command = command.ToLowerInvariant ();
