@@ -17,4 +17,4 @@ MonoBehaviour:
   description: "Search through 3 bags ensuring they follow a peculiar\r set of rules."
   version: 1.0
   outputFolder: build
-  previewImage: {fileID: 0}
+  previewImage: {fileID: 2800000, guid: 715dc900e0a26f04aa12448a674ab3a2, type: 3}

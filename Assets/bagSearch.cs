@@ -215,6 +215,7 @@ public class bagSearch : MonoBehaviour {
 		}
 
 		//Choosing the items - 1
+		bool starInBag = false;
 		int passportChance = Random.Range(0,100);
 		if (passportChance < 85) {
 			itemsBagOne [Random.Range (1, 6)] = 1;
@@ -228,13 +229,21 @@ public class bagSearch : MonoBehaviour {
 			if (itemsBagOne [j] != 1) {
 				int emptyChance = Random.Range (0, 100);
 				if (emptyChance < 85) {
-					itemsBagOne [j] = Random.Range (2, 17);
+					if (!starInBag) {
+						itemsBagOne [j] = Random.Range (2, 17);
+						if (itemsBagOne[j] == 2) {
+							starInBag = true;
+						}
+					} else {
+						itemsBagOne [j] = Random.Range (3, 17);
+					}
 				} else {
 					itemsBagOne [j] = 0;
 				}
 			}
 		}
 		//Choosing the items - 2
+		starInBag = false;
 		passportChance = Random.Range(0,100);
 		if (passportChance < 85) {
 			itemsBagTwo [Random.Range (1, 6)] = 1;
@@ -248,13 +257,21 @@ public class bagSearch : MonoBehaviour {
 			if (itemsBagTwo [j] != 1) {
 				int emptyChance = Random.Range (0, 100);
 				if (emptyChance < 85) {
-					itemsBagTwo [j] = Random.Range (2, 17);
+					if (!starInBag) {
+						itemsBagTwo [j] = Random.Range (2, 17);
+						if (itemsBagTwo [j] == 2) {
+							starInBag = true;
+						}
+					} else {
+						itemsBagTwo [j] = Random.Range (3, 17);
+					}
 				} else {
 					itemsBagTwo [j] = 0;
 				}
 			}
 		}
 		//Choosing the items - 3
+		starInBag = false;
 		passportChance = Random.Range(0,100);
 		if (passportChance < 85) {
 			itemsBagThree [Random.Range (1, 6)] = 1;
@@ -268,7 +285,14 @@ public class bagSearch : MonoBehaviour {
 			if (itemsBagThree [j] != 1) {
 				int emptyChance = Random.Range (0, 100);
 				if (emptyChance < 85) {
-					itemsBagThree [j] = Random.Range (2, 17);
+					if (!starInBag) {
+						itemsBagThree [j] = Random.Range (2, 17);
+						if (itemsBagThree [j] == 2) {
+							starInBag = true;
+						}
+					} else {
+						itemsBagThree [j] = Random.Range (3, 17);
+					}
 				} else {
 					itemsBagThree [j] = 0;
 				}
@@ -282,6 +306,10 @@ public class bagSearch : MonoBehaviour {
 			int j = i;
 			if (itemsBagOne [j] == 0) {
 				itemButtonRenderers[j].gameObject.SetActive (false);
+				moduleSelectable.Children [j] = null;
+				moduleSelectable.UpdateChildrenProperly (xrayButton);
+
+
 			}
 			if (itemsBagOne [j] == 1 || itemsBagOne [j] == 4) {
 				if (airlines [0] == "BoomSky Express") {
@@ -553,6 +581,8 @@ public class bagSearch : MonoBehaviour {
 			int j = i;
 			if (itemsBagTwo [j] == 0) {
 				itemButtonRenderers[j].gameObject.SetActive (false);
+				moduleSelectable.Children [j] = null;
+				moduleSelectable.UpdateChildrenProperly (xrayButton);
 			}
 			if (itemsBagTwo [j] == 1 || itemsBagTwo [j] == 4) {
 				if (airlines [1] == "BoomSky Express") {
@@ -781,6 +811,8 @@ public class bagSearch : MonoBehaviour {
 			int j = i;
 			if (itemsBagThree [j] == 0) {
 				itemButtonRenderers[j].gameObject.SetActive (false);
+				moduleSelectable.Children [j] = null;
+				moduleSelectable.UpdateChildrenProperly (xrayButton);
 			}
 			if (itemsBagThree [j] == 1 || itemsBagThree [j] == 4) {
 				if (airlines [2] == "BoomSky Express") {
@@ -1268,6 +1300,12 @@ public class bagSearch : MonoBehaviour {
 			if (shouldBeConfiscatedOne [position]) {
 				shouldBeConfiscatedOne [position] = false;
 				itemButtons [position].gameObject.SetActive (false);
+				int tempPos = position;
+				if (position > 2) {
+					tempPos++;
+				}
+				moduleSelectable.Children [tempPos] = null;
+				moduleSelectable.UpdateChildrenProperly (null);
 				Audio.PlayGameSoundAtTransform (KMSoundOverride.SoundEffect.BinderDrop, Module.transform);
 				Debug.LogFormat("[Bag Search #{0}] Confiscated correct item in position {1}.", _moduleId, (position + 1));
 			} else {
@@ -1278,6 +1316,12 @@ public class bagSearch : MonoBehaviour {
 			if (shouldBeConfiscatedTwo [position]) {
 				shouldBeConfiscatedTwo [position] = false;
 				itemButtons [position].gameObject.SetActive (false);
+				int tempPos = position;
+				if (position > 2) {
+					tempPos++;
+				}
+				moduleSelectable.Children [tempPos] = null;
+				moduleSelectable.UpdateChildrenProperly (null);
 				Audio.PlayGameSoundAtTransform (KMSoundOverride.SoundEffect.BinderDrop, Module.transform);
 				Debug.LogFormat("[Bag Search #{0}] Confiscated correct item in position {1}.", _moduleId, (position + 1));
 			} else {
@@ -1288,6 +1332,12 @@ public class bagSearch : MonoBehaviour {
 			if (shouldBeConfiscatedThree [position]) {
 				shouldBeConfiscatedThree [position] = false;
 				itemButtons [position].gameObject.SetActive (false);
+				int tempPos = position;
+				if (position > 2) {
+					tempPos++;
+				}
+				moduleSelectable.Children [tempPos] = null;
+				moduleSelectable.UpdateChildrenProperly (null);
 				Audio.PlayGameSoundAtTransform (KMSoundOverride.SoundEffect.BinderDrop, Module.transform);
 				Debug.LogFormat("[Bag Search #{0}] Confiscated correct item in position {1}.", _moduleId, (position + 1));
 			} else {
@@ -1297,7 +1347,6 @@ public class bagSearch : MonoBehaviour {
 		}
 	}
 
-	// Yeah so I never managed to get this to actually work, if you have any ideas please let me know.
 	void xrayNewChildren(){
 		for (int i = 0; i < 6; i++) {
 			int j = i;
@@ -1318,7 +1367,7 @@ public class bagSearch : MonoBehaviour {
 		moduleSelectable.Children [4] = null;
 		moduleSelectable.Children [5] = null;
 		moduleSelectable.Children [6] = null;
-		moduleSelectable.UpdateChildrenProperly(xrayButton);
+		moduleSelectable.UpdateChildrenProperly(null);
 	}
 
 	private readonly string TwitchHelpMessage = @"Toggle the X-ray machine with '!{0} xray', detain the passenger with '!{0} detain', allow the passenger to board with '!{0} board', confiscate an item in a specific position with '!{0} confiscate 1' with the number being the position in scanline order of the item or enable colourblind mode using '!{0} colourblind'";
