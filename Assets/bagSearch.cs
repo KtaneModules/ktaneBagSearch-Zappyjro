@@ -306,11 +306,15 @@ public class bagSearch : MonoBehaviour {
 			int j = i;
 			if (itemsBagOne [j] == 0) {
 				itemButtonRenderers[j].gameObject.SetActive (false);
+				if (j > 2){
+					j++;
+				}
 				moduleSelectable.Children [j] = null;
 				moduleSelectable.UpdateChildrenProperly (xrayButton);
 
 
 			}
+			j = i;
 			if (itemsBagOne [j] == 1 || itemsBagOne [j] == 4) {
 				if (airlines [0] == "BoomSky Express") {
 					shouldBeConfiscatedOne [j] = true;
@@ -581,9 +585,13 @@ public class bagSearch : MonoBehaviour {
 			int j = i;
 			if (itemsBagTwo [j] == 0) {
 				itemButtonRenderers[j].gameObject.SetActive (false);
+				if (j > 2){
+					j++;
+				}
 				moduleSelectable.Children [j] = null;
 				moduleSelectable.UpdateChildrenProperly (xrayButton);
 			}
+			j = i;
 			if (itemsBagTwo [j] == 1 || itemsBagTwo [j] == 4) {
 				if (airlines [1] == "BoomSky Express") {
 					shouldBeConfiscatedOne [j] = true;
@@ -811,9 +819,13 @@ public class bagSearch : MonoBehaviour {
 			int j = i;
 			if (itemsBagThree [j] == 0) {
 				itemButtonRenderers[j].gameObject.SetActive (false);
+				if (j > 2){
+					j++;
+				}
 				moduleSelectable.Children [j] = null;
 				moduleSelectable.UpdateChildrenProperly (xrayButton);
 			}
+			j = i;
 			if (itemsBagThree [j] == 1 || itemsBagThree [j] == 4) {
 				if (airlines [2] == "BoomSky Express") {
 					shouldBeConfiscatedThree [j] = true;
@@ -1206,10 +1218,13 @@ public class bagSearch : MonoBehaviour {
 			Debug.LogFormat ("[Bag Search #{0}] Boarded passenger successfully.", _moduleId);
 			if (currentBag == 0) {
 				bagTwoSetup ();
+				return;
 			} else if (currentBag == 1) {
 				bagThreeSetup ();
+				return;
 			} else {
 				solvedModule ();
+				return;
 			}
 		}
 		bool temp = false;
@@ -1301,7 +1316,7 @@ public class bagSearch : MonoBehaviour {
 				shouldBeConfiscatedOne [position] = false;
 				itemButtons [position].gameObject.SetActive (false);
 				int tempPos = position;
-				if (position > 2) {
+				if (tempPos > 2){
 					tempPos++;
 				}
 				moduleSelectable.Children [tempPos] = null;
@@ -1317,7 +1332,7 @@ public class bagSearch : MonoBehaviour {
 				shouldBeConfiscatedTwo [position] = false;
 				itemButtons [position].gameObject.SetActive (false);
 				int tempPos = position;
-				if (position > 2) {
+				if (tempPos > 2){
 					tempPos++;
 				}
 				moduleSelectable.Children [tempPos] = null;
@@ -1333,7 +1348,7 @@ public class bagSearch : MonoBehaviour {
 				shouldBeConfiscatedThree [position] = false;
 				itemButtons [position].gameObject.SetActive (false);
 				int tempPos = position;
-				if (position > 2) {
+				if (tempPos > 2){
 					tempPos++;
 				}
 				moduleSelectable.Children [tempPos] = null;

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorkshopPublishedFileID: 0
   Title: Bag Search
-  Tags: []
+  Tags:
+  - Regular Module
