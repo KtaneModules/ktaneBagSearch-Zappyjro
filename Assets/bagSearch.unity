@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -258,46 +258,6 @@ Prefab:
     - target: {fileID: 4668450410057750, guid: 5ce49ac8eb4e00d48b15897ef674eb26, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 23049215763215632, guid: 5ce49ac8eb4e00d48b15897ef674eb26,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3c626cd3227fdd942a023a707bd4f338, type: 2}
-    - target: {fileID: 23075397454868834, guid: 5ce49ac8eb4e00d48b15897ef674eb26,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3c626cd3227fdd942a023a707bd4f338, type: 2}
-    - target: {fileID: 23847738830036720, guid: 5ce49ac8eb4e00d48b15897ef674eb26,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3c626cd3227fdd942a023a707bd4f338, type: 2}
-    - target: {fileID: 23907103576232336, guid: 5ce49ac8eb4e00d48b15897ef674eb26,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3c626cd3227fdd942a023a707bd4f338, type: 2}
-    - target: {fileID: 23013175894536698, guid: 5ce49ac8eb4e00d48b15897ef674eb26,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3c626cd3227fdd942a023a707bd4f338, type: 2}
-    - target: {fileID: 23832882664859148, guid: 5ce49ac8eb4e00d48b15897ef674eb26,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3c626cd3227fdd942a023a707bd4f338, type: 2}
-    - target: {fileID: 114806626865457500, guid: 5ce49ac8eb4e00d48b15897ef674eb26,
-        type: 2}
-      propertyPath: AllowSelectionWrapY
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114806626865457500, guid: 5ce49ac8eb4e00d48b15897ef674eb26,
-        type: 2}
-      propertyPath: AllowSelectionWrapX
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5ce49ac8eb4e00d48b15897ef674eb26, type: 2}
