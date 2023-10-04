@@ -1217,12 +1217,15 @@ public class bagSearch : MonoBehaviour {
 		if (airlines [currentBag] == "FRQandU" && Info.IsIndicatorPresent ("FRQ")) {
 			Debug.LogFormat ("[Bag Search #{0}] Boarded passenger successfully.", _moduleId);
 			if (currentBag == 0) {
+				oneDetained = false;
 				bagTwoSetup ();
 				return;
 			} else if (currentBag == 1) {
+				twoDetained = false;
 				bagThreeSetup ();
 				return;
 			} else {
+				threeDetained = false;
 				solvedModule ();
 				return;
 			}
