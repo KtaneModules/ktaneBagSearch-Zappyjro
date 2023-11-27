@@ -594,7 +594,7 @@ public class bagSearch : MonoBehaviour {
 			j = i;
 			if (itemsBagTwo [j] == 1 || itemsBagTwo [j] == 4) {
 				if (airlines [1] == "BoomSky Express") {
-					shouldBeConfiscatedOne [j] = true;
+					shouldBeConfiscatedTwo [j] = true;
 				}
 			}
 			//ball
