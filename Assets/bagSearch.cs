@@ -1033,10 +1033,13 @@ public class bagSearch : MonoBehaviour {
 		if (airlinesFake [currentBag]) {
 			Debug.LogFormat ("[Bag Search #{0}] Detained passenger successfully.", _moduleId);
 			if (currentBag == 0) {
+				oneDetained = true;
 				bagTwoSetup ();
 			} else if (currentBag == 1) {
+				twpDetained = true;
 				bagThreeSetup ();
 			} else {
+				threeDetained = true;
 				solvedModule ();
 			}
 			return;
