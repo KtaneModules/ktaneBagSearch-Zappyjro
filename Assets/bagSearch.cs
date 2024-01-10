@@ -1036,7 +1036,7 @@ public class bagSearch : MonoBehaviour {
 				oneDetained = true;
 				bagTwoSetup ();
 			} else if (currentBag == 1) {
-				twpDetained = true;
+				twoDetained = true;
 				bagThreeSetup ();
 			} else {
 				threeDetained = true;
